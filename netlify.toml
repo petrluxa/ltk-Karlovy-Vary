@@ -1,0 +1,16 @@
+# Statické HTML — nic se nebuilduje, publikuje se kořen složky.
+[build]
+  publish = "."
+  command = ""
+
+# Obrázky a loga se mění zřídka.
+[[headers]]
+  for = "/img/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+# Návrhy se během ladění mění — ať klient vždy vidí aktuální verzi.
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"

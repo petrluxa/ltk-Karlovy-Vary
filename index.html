@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Návrhy webu LTK Karlovy Vary</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap">
+<style>
+:root{
+  --ground:#FAF9F6;
+  --surface:#FFFFFF;
+  --ink:#0B0026;
+  --ink-soft:#44405E;
+  --muted:#6A6683;
+  --indigo:#18006A;
+  --indigo-lift:#2A0E8F;
+  --lime:#ABFF00;
+  --lime-ink:#5A7F00;
+  --line:#E4E2EC;
+  --line-soft:#EFEEF4;
+  --shadow:0 18px 44px rgba(11,0,38,.10);
+  --btn-ink:#FFFFFF;
+  --disp:'Archivo',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --body:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#0B0026;
+    --surface:#140442;
+    --ink:#F6F5FB;
+    --ink-soft:#C6C2DC;
+    --muted:#9A95B5;
+    --indigo:#B9A5FF;
+    --indigo-lift:#CBBCFF;
+    --lime:#ABFF00;
+    --lime-ink:#C6FF4D;
+    --line:#2C1A63;
+    --line-soft:#1E0C52;
+    --shadow:0 18px 44px rgba(0,0,0,.45);
+    --btn-ink:#0B0026;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0B0026;
+  --surface:#140442;
+  --ink:#F6F5FB;
+  --ink-soft:#C6C2DC;
+  --muted:#9A95B5;
+  --indigo:#B9A5FF;
+  --indigo-lift:#CBBCFF;
+  --lime:#ABFF00;
+  --lime-ink:#C6FF4D;
+  --line:#2C1A63;
+  --line-soft:#1E0C52;
+  --shadow:0 18px 44px rgba(0,0,0,.45);
+  --btn-ink:#0B0026;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--ground);color:var(--ink);
+  font-family:var(--body);font-size:16px;font-weight:400;line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{width:100%;max-width:1080px;margin:0 auto;padding-left:20px;padding-right:20px}
+
+/* ---------- hlavicka ---------- */
+.head{padding-block:56px 40px;border-bottom:1px solid var(--line)}
+.head-top{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.head-top img{width:78px;height:auto;flex:none}
+.stamp{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--disp);font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--indigo);background:color-mix(in srgb, var(--indigo) 9%, transparent);
+  border:1px solid color-mix(in srgb, var(--indigo) 22%, transparent);
+  padding:6px 13px;border-radius:999px;
+}
+.stamp::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--lime)}
+h1{
+  font-family:var(--disp);font-weight:800;letter-spacing:-.035em;
+  font-size:clamp(30px,4.6vw,50px);line-height:1.08;margin:22px 0 0;
+  text-wrap:balance;padding-top:.1em;
+}
+.lede{font-size:clamp(16px,1.5vw,18.5px);color:var(--ink-soft);font-weight:300;max-width:62ch;margin:18px 0 0}
+
+/* ---------- varianty ---------- */
+.varianty{padding-block:12px 8px;display:flex;flex-direction:column;gap:14px}
+.var{
+  display:grid;grid-template-columns:1.32fr 1fr;gap:0;
+  background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden;
+  box-shadow:var(--shadow);
+}
+.var-nahled{position:relative;background:var(--line-soft);border-right:1px solid var(--line)}
+.var-nahled img{width:100%;height:100%;object-fit:cover;object-position:top center}
+.var-cislo{
+  position:absolute;left:14px;bottom:14px;
+  font-family:var(--disp);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  background:var(--lime);color:#0B0026;padding:5px 11px;border-radius:4px;
+}
+.var-telo{padding:30px 30px 28px;display:flex;flex-direction:column}
+.var-telo h2{
+  font-family:var(--disp);font-size:clamp(22px,2.6vw,29px);font-weight:800;letter-spacing:-.03em;
+  line-height:1.12;margin:0 0 4px;padding-top:.08em;
+}
+.var-podtitul{font-family:var(--disp);font-size:11.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 16px}
+.var-telo p{margin:0;font-size:15px;color:var(--ink-soft);font-weight:300;line-height:1.7}
+.znaky{list-style:none;margin:18px 0 0;padding:0;display:flex;flex-direction:column;gap:7px;font-size:14px;color:var(--muted)}
+.znaky li{display:flex;gap:9px;align-items:baseline}
+.znaky li::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--lime);flex:none;transform:translateY(-2px)}
+.otevrit{
+  margin-top:auto;padding-top:24px;
+  display:inline-flex;align-items:center;gap:9px;align-self:flex-start;
+}
+.otevrit a{
+  display:inline-flex;align-items:center;gap:9px;
+  font-family:var(--disp);font-size:12.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+  background:var(--indigo);color:var(--btn-ink);text-decoration:none;
+  padding:13px 22px;border-radius:6px;transition:background .2s,transform .2s;
+}
+.otevrit a:hover{background:var(--indigo-lift);transform:translateY(-2px)}
+.otevrit a:focus-visible{outline:3px solid var(--lime);outline-offset:3px}
+
+/* ---------- spolecne ---------- */
+.spolecne{padding-block:52px 12px}
+.spolecne h3,.dalsi h3{
+  font-family:var(--disp);font-size:clamp(20px,2.4vw,26px);font-weight:700;letter-spacing:-.025em;
+  margin:0 0 6px;padding-top:.08em;
+}
+.spolecne .pod,.dalsi .pod{font-size:15px;color:var(--muted);font-weight:300;margin:0 0 26px;max-width:60ch}
+.obsah{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.obsah div{background:var(--surface);padding:20px 18px}
+.obsah b{display:block;font-family:var(--disp);font-size:14.5px;font-weight:700;letter-spacing:-.01em;margin-bottom:5px}
+.obsah span{display:block;font-size:13.5px;color:var(--muted);font-weight:300;line-height:1.6}
+
+/* ---------- co dal ---------- */
+.dalsi{padding-block:48px 64px}
+.pozn{
+  border-left:3px solid var(--lime);padding:2px 0 2px 20px;
+  display:flex;flex-direction:column;gap:14px;
+}
+.pozn p{margin:0;font-size:15px;color:var(--ink-soft);font-weight:300;line-height:1.7;max-width:64ch}
+.pozn p strong{font-family:var(--disp);font-weight:700;color:var(--ink);letter-spacing:-.01em}
+footer{border-top:1px solid var(--line);padding-block:24px 8px;font-size:13px;color:var(--muted);display:flex;flex-wrap:wrap;gap:6px 20px;justify-content:space-between}
+
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+
+@media (max-width:860px){
+  .var{grid-template-columns:1fr}
+  .var-nahled{border-right:0;border-bottom:1px solid var(--line);aspect-ratio:16/10}
+  .obsah{grid-template-columns:1fr 1fr}
+}
+@media (max-width:520px){
+  .head{padding-block:40px 32px}
+  .var-telo{padding:24px 20px 24px}
+  .obsah{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+
+<div class="wrap">
+
+  <header class="head">
+    <div class="head-top">
+      <img src="img/logo-ltk-znak.png" alt="Znak TK Lokomotiva Karlovy Vary">
+      <div>
+        <span class="stamp">Návrhy k výběru</span>
+        <h1>Tři návrhy webu pro&nbsp;TK&nbsp;Lokomotiva Karlovy&nbsp;Vary</h1>
+      </div>
+    </div>
+    <p class="lede">
+      Každý návrh je hotová úvodní stránka, kterou si můžete proklikat — ne obrázek.
+      Obsah je ve všech třech stejný a vychází ze současného webu teniskv.cz.
+      Liší se atmosférou: vyberte si tu, která klubu sedí, a doladíme ji.
+    </p>
+  </header>
+
+  <main class="varianty">
+
+    <article class="var">
+      <div class="var-nahled">
+        <span class="var-cislo">Návrh 1</span>
+        <img src="nahled-01.jpg" alt="Náhled návrhu Indigová noc — tmavá úvodní stránka s klubovým znakem" loading="lazy">
+      </div>
+      <div class="var-telo">
+        <h2>Indigová noc</h2>
+        <p class="var-podtitul">Tmavý &middot; prémiový &middot; výrazný</p>
+        <p>
+          Klubový znak ve velkém na fotce areálu pod tmavým závojem. Elegantní patkové písmo,
+          limetkové akcenty, prosklené karty. Ze všech tří je nejvýraznější a nejlépe funguje na velkých obrazovkách.
+        </p>
+        <ul class="znaky">
+          <li>znak jako hlavní motiv úvodní stránky</li>
+          <li>historie klubu jako časová osa</li>
+          <li>vhodné, pokud má web působit sebevědomě</li>
+        </ul>
+        <div class="otevrit"><a href="01-indigova-noc.html" target="_blank" rel="noopener">Otevřít návrh 1</a></div>
+      </div>
+    </article>
+
+    <article class="var">
+      <div class="var-nahled">
+        <span class="var-cislo">Návrh 2</span>
+        <img src="nahled-02.jpg" alt="Náhled návrhu Porcelán — světlá krémová úvodní stránka" loading="lazy">
+      </div>
+      <div class="var-telo">
+        <h2>Porcelán</h2>
+        <p class="var-podtitul">Světlý &middot; klidný &middot; lázeňský</p>
+        <p>
+          Krémový papír, tenké zlaté linky a hodně vzduchu — odkaz na lázeňské Karlovy Vary.
+          Nejtišší z trojice, sází na typografii místo efektů. Dobře se čte a nestárne.
+        </p>
+        <ul class="znaky">
+          <li>fotka areálu jako obrazový pás v textu</li>
+          <li>tenisová škola jako přehledné řádky</li>
+          <li>vhodné, pokud má web působit noblesně</li>
+        </ul>
+        <div class="otevrit"><a href="02-porcelan.html" target="_blank" rel="noopener">Otevřít návrh 2</a></div>
+      </div>
+    </article>
+
+    <article class="var">
+      <div class="var-nahled">
+        <span class="var-cislo">Návrh 3</span>
+        <img src="nahled-03.jpg" alt="Náhled návrhu Centrkurt — bílá úvodní stránka se silnou typografií" loading="lazy">
+      </div>
+      <div class="var-telo">
+        <h2>Centrkurt</h2>
+        <p class="var-podtitul">Bílý &middot; přehledný &middot; sportovní</p>
+        <p>
+          Bílá základna, silné písmo a ostrá mřížka. Úvodní stránka je rozdělená na dvě části —
+          vlevo sdělení, vpravo přehled kurtů a cen. Nejlépe se do něj budou přidávat další stránky.
+        </p>
+        <ul class="znaky">
+          <li>ceny a počty kurtů vidí návštěvník hned</li>
+          <li>historie jako vodorovná osa</li>
+          <li>vhodné, pokud má web hlavně sloužit</li>
+        </ul>
+        <div class="otevrit"><a href="03-centrkurt.html" target="_blank" rel="noopener">Otevřít návrh 3</a></div>
+      </div>
+    </article>
+
+  </main>
+
+  <section class="spolecne">
+    <h3>Co mají všechny tři společné</h3>
+    <p class="pod">Obsah je převzatý ze současného webu, nic si nevymýšlíme. Přibyly jen sekce, které dnes na webu chybí.</p>
+    <div class="obsah">
+      <div><b>Areál</b><span>7 antukových kurtů, 2 s tvrdým povrchem, tréninková zeď, zimní hala se dvěma dvorci</span></div>
+      <div><b>Tenisová škola</b><span>Šest skupin od školičky do 7 let po dorost, příměstské tábory, kontakt na trenéra</span></div>
+      <div><b>Ceník</b><span>Pronájem kurtů i ceny tréninků podle počtu hráčů, venku i v hale</span></div>
+      <div><b>Historie</b><span>Od dvou kurtů na Růžovém Vrchu v roce 1952 po postup do druhé ligy</span></div>
+      <div><b>Trenéři</b><span>Čtyři trenéři s telefony, včetně šéftrenéra a hlavního trenéra</span></div>
+      <div><b>Partneři</b><span>Devět partnerů ve třech úrovních — město, kraj, firmy, svazy</span></div>
+      <div><b>Rezervace</b><span>Telefon na rezervace vidí návštěvník z každé části stránky</span></div>
+      <div><b>Mobil</b><span>Všechny tři návrhy jsou vyzkoušené i na telefonu</span></div>
+    </div>
+  </section>
+
+  <section class="dalsi">
+    <h3>Než se rozhodnete</h3>
+    <p class="pod">Tři věci, které stojí za zmínku, ať víte, co je hotové a co ne.</p>
+    <div class="pozn">
+      <p><strong>Fotky.</strong> Zatím používáme jen fotku areálu ze současného webu, a to v malém rozlišení. Pro ostrý web by se hodily fotografie ve vyšší kvalitě — kurty, hala, děti na tréninku, klubový život.</p>
+      <p><strong>Rezervace kurtů.</strong> Návrhy vedou na telefon, jak to funguje dnes. Pokud by klub chtěl online rezervace, je to samostatná věc navíc.</p>
+      <p><strong>Zařazení partnerů.</strong> Rozdělení do tří úrovní je náš odhad — současný web je neřadí. Pořadí a úrovně potřebujeme potvrdit.</p>
+    </div>
+  </section>
+
+  <footer>
+    <span>Návrhy webu pro Tenisový klub Lokomotiva Karlovy Vary z.s.</span>
+    <span>Pracovní verze k připomínkám</span>
+  </footer>
+
+</div>
+
+</body>
+</html>

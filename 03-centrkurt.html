@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>TK Lokomotiva Karlovy Vary — Centrkurt</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#18006A; --ink-2:#2A0E8F; --ink-3:#0D0038;
+  --lime:#ABFF00; --lime-2:#C6FF4D;
+  --white:#FFFFFF; --snow:#F7F7FA; --cloud:#EFEFF4;
+  --grey:#5C5A6B; --faint:#93909F;
+  --line:#E3E2EA; --line-2:rgba(255,255,255,.16);
+  --disp:'Archivo',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  --maxw:1280px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--white);color:var(--ink-3);font-family:var(--sans);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding-left:26px;padding-right:26px}
+h1,h2,h3{font-family:var(--disp);font-weight:800;margin:0;letter-spacing:-.03em;line-height:1.02}
+.tag{display:inline-flex;align-items:center;gap:9px;font-family:var(--disp);font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);margin:0 0 20px}
+.tag::before{content:"";width:22px;height:3px;background:var(--lime)}
+.tag.light{color:var(--lime)}
+.tag.light::before{background:var(--lime)}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.93);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:22px;padding-top:14px;padding-bottom:14px}
+.brand{display:flex;align-items:center;gap:14px}
+.brand img{height:56px;width:auto}
+.brand .bt strong{display:block;font-family:var(--disp);font-size:17px;font-weight:800;letter-spacing:-.02em;line-height:1.15}
+.brand .bt span{display:block;font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--faint);margin-top:2px}
+.menu{display:flex;align-items:center;gap:28px;font-family:var(--disp);font-size:13.5px;font-weight:600;letter-spacing:-.01em;color:var(--grey)}
+.menu a{position:relative;padding:4px 0;transition:color .2s}
+.menu a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:3px;background:var(--lime);transition:width .28s}
+.menu a:hover{color:var(--ink)}
+.menu a:hover::after{width:100%}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 26px;font-family:var(--disp);font-size:12.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;border:2px solid transparent;transition:transform .22s,background .22s,color .22s,border-color .22s;cursor:pointer;border-radius:4px}
+.btn-ink{background:var(--ink);color:#fff}
+.btn-ink:hover{background:var(--ink-2);transform:translateY(-2px)}
+.btn-lime{background:var(--lime);color:var(--ink-3)}
+.btn-lime:hover{background:var(--lime-2);transform:translateY(-2px)}
+.btn-out{border-color:var(--ink);color:var(--ink)}
+.btn-out:hover{background:var(--ink);color:#fff}
+.btn-out-light{border-color:rgba(255,255,255,.4);color:#fff}
+.btn-out-light:hover{background:#fff;color:var(--ink)}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:0;padding:8px}
+.burger i{display:block;width:22px;height:2px;background:var(--ink)}
+
+/* hero */
+.hero{border-bottom:1px solid var(--line)}
+.hero .wrap{display:grid;grid-template-columns:1.18fr .82fr;gap:0;align-items:stretch;padding-left:0;padding-right:0;max-width:none}
+.hero-l{padding:88px 60px 74px;display:flex;flex-direction:column;justify-content:center;max-width:calc(var(--maxw) * .62);margin-left:auto}
+.hero-l h1{font-size:clamp(46px,6.6vw,96px);letter-spacing:-.04em;line-height:.98;padding-top:.14em;margin-top:-.14em}
+.hero-l h1 span{color:var(--ink)}
+.hero-l h1 mark{background:var(--lime);color:var(--ink-3);padding:0 .1em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.hero-l p{font-size:clamp(16px,1.3vw,18.5px);color:var(--grey);max-width:50ch;margin:26px 0 34px;font-weight:300}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px}
+.hero-r{position:relative;background:var(--ink);color:#fff;padding:74px 60px;overflow:hidden;display:flex;flex-direction:column;justify-content:center}
+.hero-r::before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--line-2) 1px,transparent 1px),linear-gradient(90deg,var(--line-2) 1px,transparent 1px);background-size:64px 64px;opacity:.7}
+.hero-r::after{content:"";position:absolute;right:-90px;bottom:-90px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(171,255,0,.22),transparent 68%)}
+.hero-r>*{position:relative;z-index:2}
+.hero-r h2{font-family:var(--disp);font-size:14px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--lime);margin-bottom:26px}
+.hrow{display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:16px 0;border-bottom:1px solid var(--line-2)}
+.hrow:last-of-type{border-bottom:0}
+.hrow span{font-size:14.5px;color:rgba(255,255,255,.72);font-weight:300}
+.hrow b{font-family:var(--disp);font-size:26px;font-weight:800;letter-spacing:-.03em;white-space:nowrap}
+.hrow b small{font-family:var(--sans);font-size:12px;font-weight:400;color:rgba(255,255,255,.55);letter-spacing:0}
+.hero-r .btn{margin-top:28px;width:100%}
+
+/* marquee */
+.mq{background:var(--lime);color:var(--ink-3);overflow:hidden;border-bottom:1px solid var(--line)}
+.mq-track{display:flex;gap:0;white-space:nowrap;animation:mq 34s linear infinite;font-family:var(--disp);font-weight:800;font-size:15px;letter-spacing:.06em;text-transform:uppercase;padding:14px 0}
+.mq-track span{padding:0 26px;display:inline-flex;align-items:center;gap:26px}
+.mq-track span::after{content:"";width:7px;height:7px;background:var(--ink);border-radius:50%;display:inline-block}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.mq-track{animation:none}}
+
+/* sections */
+section{padding:106px 0}
+.sec-head{display:grid;grid-template-columns:1fr .85fr;gap:50px;align-items:end;margin-bottom:54px}
+.sec-head h2{font-size:clamp(32px,4.6vw,60px);letter-spacing:-.035em;padding-top:.14em;margin-top:-.14em}
+.sec-head p{color:var(--grey);font-size:16.5px;font-weight:300;margin:0;max-width:52ch}
+.sec-head.solo{grid-template-columns:1fr}
+
+/* cisla */
+.cisla{background:var(--snow);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:0}
+.cisla .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+.ci{padding:44px 26px;border-right:1px solid var(--line)}
+.ci:last-child{border-right:0}
+.ci b{display:block;font-family:var(--disp);font-size:clamp(38px,4.6vw,62px);font-weight:800;letter-spacing:-.04em;line-height:1;color:var(--ink);padding-top:.1em}
+.ci span{display:block;margin-top:10px;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+
+/* klub */
+.klub-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:start}
+.klub-grid p{color:var(--grey);font-size:16.5px;font-weight:300}
+.klub-grid p+p{margin-top:18px}
+.klub-grid p:first-of-type{margin-top:0;font-size:19px;color:var(--ink-3);font-weight:400;line-height:1.55}
+.sig{margin-top:32px;padding-left:20px;border-left:3px solid var(--lime);font-size:13.5px;color:var(--faint)}
+.sig b{display:block;font-family:var(--disp);font-size:17px;font-weight:700;color:var(--ink-3);letter-spacing:-.02em}
+.surfaces{border-top:2px solid var(--ink-3)}
+.sf{display:grid;grid-template-columns:auto 1fr auto;gap:22px;align-items:center;padding:24px 0;border-bottom:1px solid var(--line);transition:background .25s,padding .25s}
+.sf:hover{background:var(--snow);padding-left:14px;padding-right:14px}
+.sf .n{font-family:var(--disp);font-size:34px;font-weight:800;color:var(--ink);letter-spacing:-.04em;line-height:1;min-width:52px;padding-top:.08em}
+.sf strong{display:block;font-family:var(--disp);font-size:17px;font-weight:700;letter-spacing:-.01em}
+.sf span{display:block;font-size:14px;color:var(--grey);font-weight:300;line-height:1.5}
+.sf .chip{font-family:var(--disp);font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;background:var(--cloud);color:var(--ink);padding:6px 12px;border-radius:3px;white-space:nowrap}
+.sf .chip.on{background:var(--lime)}
+
+/* skola */
+.skola{background:var(--snow);border-top:1px solid var(--line)}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--line);border:1px solid var(--line)}
+.card{background:var(--white);padding:36px 30px 34px;transition:background .3s,transform .3s}
+.card:hover{background:var(--ink);color:#fff;transform:scale(1.015);position:relative;z-index:2}
+.card .age{display:inline-block;font-family:var(--disp);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);background:var(--lime);padding:6px 12px;border-radius:3px;margin-bottom:20px}
+.card h3{font-size:25px;letter-spacing:-.025em;margin-bottom:12px;line-height:1.12}
+.card p{margin:0;font-size:14.5px;color:var(--grey);font-weight:300;line-height:1.6;transition:color .3s}
+.card:hover p{color:rgba(255,255,255,.75)}
+.skola-cta{margin-top:2px;background:var(--ink-3);color:#fff;padding:44px 44px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:26px}
+.skola-cta h3{font-size:32px;letter-spacing:-.03em;line-height:1.1}
+.skola-cta p{margin:10px 0 0;color:rgba(255,255,255,.7);font-weight:300;max-width:54ch}
+
+/* treneri */
+.coaches{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.coach{border:1px solid var(--line);border-radius:6px;overflow:hidden;transition:transform .3s,box-shadow .3s,border-color .3s}
+.coach:hover{transform:translateY(-6px);box-shadow:0 20px 44px rgba(24,0,106,.1);border-color:var(--ink)}
+.coach .ph{height:120px;background:linear-gradient(140deg,var(--ink),var(--ink-2));position:relative;display:grid;place-items:center}
+.coach .ph::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.1) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.1) 1px,transparent 1px);background-size:28px 28px}
+.coach .ph b{position:relative;font-family:var(--disp);font-size:34px;font-weight:800;color:var(--lime);letter-spacing:-.03em;padding-top:.08em}
+.coach .cb{padding:22px 22px 26px}
+.coach h3{font-size:20px;letter-spacing:-.02em;line-height:1.2}
+.coach .role{margin:6px 0 14px;font-size:11.5px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--faint)}
+.coach .tel{font-family:var(--disp);font-size:17px;font-weight:700;color:var(--ink);letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+.coach .tel:hover{color:var(--ink-2)}
+
+/* cenik */
+.cenik{background:var(--snow);border-top:1px solid var(--line)}
+.ptables{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
+.pt{background:var(--white);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.pt.hi{border-color:var(--ink);box-shadow:0 18px 44px rgba(24,0,106,.1)}
+.pt .pth{padding:26px 30px;background:var(--white);border-bottom:2px solid var(--ink-3);display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 16px}
+.pt.hi .pth{background:var(--ink);border-bottom-color:var(--lime)}
+.pt .pth h3{font-size:22px;letter-spacing:-.025em}
+.pt.hi .pth h3{color:#fff}
+.pt .pth span{font-family:var(--disp);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+.pt.hi .pth span{color:var(--lime)}
+.pt .ptb{padding:8px 30px 26px}
+.pr{display:flex;align-items:baseline;justify-content:space-between;gap:18px;padding:15px 0;border-bottom:1px solid var(--line)}
+.pr:last-child{border-bottom:0}
+.pr span{font-size:15px;color:var(--grey);font-weight:300}
+.pr b{font-family:var(--disp);font-size:22px;font-weight:800;letter-spacing:-.03em;white-space:nowrap;color:var(--ink)}
+.pr b small{font-family:var(--sans);font-size:12px;font-weight:400;color:var(--faint);letter-spacing:0}
+.pnote{margin-top:24px;font-size:13.5px;color:var(--faint);line-height:1.7;max-width:80ch}
+
+/* historie */
+.hist-scroll{overflow-x:auto;padding-bottom:10px;margin-left:-4px;padding-left:4px}
+.hist{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(196px,1fr);gap:0;border-top:2px solid var(--ink-3);min-width:100%}
+.hi{padding:30px 22px 34px;border-right:1px solid var(--line);position:relative}
+.hi:last-child{border-right:0}
+.hi::before{content:"";position:absolute;top:-2px;left:0;width:0;height:2px;background:var(--lime);transition:width .4s}
+.hi:hover::before{width:100%}
+.hi b{display:block;font-family:var(--disp);font-size:40px;font-weight:800;letter-spacing:-.04em;color:var(--ink);line-height:1;padding-top:.08em}
+.hi strong{display:block;margin:14px 0 8px;font-family:var(--disp);font-size:16px;font-weight:700;letter-spacing:-.01em;line-height:1.3}
+.hi p{margin:0;font-size:14px;color:var(--grey);font-weight:300;line-height:1.55}
+.legends{margin-top:54px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.leg{padding:26px 24px;border:1px solid var(--line);border-radius:6px;text-align:center}
+.leg.star{background:var(--ink);border-color:var(--ink);color:#fff}
+.leg b{display:block;font-family:var(--disp);font-size:18px;font-weight:700;letter-spacing:-.02em;line-height:1.25}
+.leg span{display:block;margin-top:8px;font-size:12px;color:var(--faint);font-weight:400}
+.leg.star span{color:var(--lime)}
+
+/* aktuality */
+.news{background:var(--snow);border-top:1px solid var(--line)}
+.ngrid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.nit{background:var(--white);border:1px solid var(--line);border-radius:6px;overflow:hidden;transition:transform .3s,box-shadow .3s}
+.nit:hover{transform:translateY(-6px);box-shadow:0 20px 46px rgba(24,0,106,.1)}
+.nimg{height:178px;background:linear-gradient(150deg,var(--ink),var(--ink-3));position:relative}
+.nimg::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.08) 1px,transparent 1px);background-size:32px 32px}
+.nimg em{position:absolute;left:18px;bottom:16px;font-style:normal;font-family:var(--disp);font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;background:var(--lime);color:var(--ink-3);padding:6px 12px;border-radius:3px}
+.nbody{padding:24px 24px 28px}
+.nbody time{font-family:var(--disp);font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--faint)}
+.nbody h3{font-size:21px;letter-spacing:-.025em;margin:10px 0;line-height:1.2}
+.nbody p{margin:0;font-size:14.5px;color:var(--grey);font-weight:300;line-height:1.6}
+.nbody .more{display:inline-block;margin-top:16px;font-family:var(--disp);font-size:11.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--ink);border-bottom:2px solid var(--lime);padding-bottom:2px}
+
+/* partneri */
+.partneri{background:var(--white);border-top:1px solid var(--line)}
+.pgrp{margin-bottom:38px}
+.pgrp:last-of-type{margin-bottom:0}
+.pgrp-head{font-family:var(--disp);font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--faint);text-align:center;margin-bottom:18px}
+.prada{display:grid;gap:2px;background:var(--line);border:1px solid var(--line)}
+.pbox{background:#fff;display:flex;align-items:center;justify-content:center;padding:24px;transition:background .3s,transform .3s}
+a.pbox:hover{background:var(--snow);transform:scale(1.03);position:relative;z-index:2;box-shadow:0 14px 34px rgba(24,0,106,.12)}
+.pbox img{max-width:100%;max-height:100%;object-fit:contain}
+.prada.main{grid-template-columns:repeat(3,1fr)}
+.prada.main .pbox{height:150px;padding:30px}
+.prada.sub{grid-template-columns:repeat(3,1fr)}
+.prada.sub .pbox{height:112px;padding:20px}
+.prada.inst{grid-template-columns:repeat(3,1fr)}
+.prada.inst .pbox{height:94px;padding:16px}
+.pcta{margin-top:46px;padding:30px 34px;background:var(--snow);border:1px solid var(--line);border-radius:6px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px}
+.pcta p{margin:0;font-size:15.5px;color:var(--grey);font-weight:300}
+.pcta p b{font-family:var(--disp);color:var(--ink-3);font-weight:700;letter-spacing:-.01em}
+
+/* rezervace */
+.rez{position:relative;overflow:hidden;color:#fff;background:
+  linear-gradient(115deg,rgba(24,0,106,.95) 0%,rgba(24,0,106,.82) 45%,rgba(13,0,56,.72) 100%),
+  url('img/areal-kurty.jpg') center 40%/cover no-repeat;
+  background-blend-mode:multiply,normal}
+.rez::before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--line-2) 1px,transparent 1px),linear-gradient(90deg,var(--line-2) 1px,transparent 1px);background-size:72px 72px;opacity:.6}
+.rez::after{content:"";position:absolute;left:-120px;top:-120px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(171,255,0,.18),transparent 66%)}
+.rez .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+.rez h2{font-size:clamp(32px,4.8vw,58px);letter-spacing:-.035em;line-height:1.06;padding-top:.14em;margin-top:-.14em}
+.rez p{color:rgba(255,255,255,.72);font-size:17px;font-weight:300;margin:20px 0 32px;max-width:48ch}
+.rez-box{background:rgba(255,255,255,.07);border:1px solid var(--line-2);border-radius:8px;padding:36px 34px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.rez-box span{display:block;font-family:var(--disp);font-size:11.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--lime);margin-bottom:12px}
+.rez-box .phone{display:block;font-family:var(--disp);font-size:clamp(28px,3.6vw,42px);font-weight:800;letter-spacing:-.035em;color:#fff;font-variant-numeric:tabular-nums;line-height:1.12;padding-top:.08em}
+.rez-box p{margin:14px 0 24px;font-size:14.5px;color:rgba(255,255,255,.62)}
+.rez-box .btn{width:100%}
+
+/* kontakt */
+.kgrid{display:grid;grid-template-columns:.9fr 1.1fr;gap:54px;align-items:start}
+.kgrid h2{font-size:clamp(30px,4vw,50px);letter-spacing:-.035em;padding-top:.14em;margin-top:-.14em}
+.kb{padding:20px 0;border-bottom:1px solid var(--line)}
+.kb:first-of-type{border-top:2px solid var(--ink-3);margin-top:30px}
+.kb span{display:block;font-family:var(--disp);font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--faint);margin-bottom:7px}
+.kb p{margin:0;font-size:16px;color:var(--ink-3);line-height:1.6;font-weight:400;overflow-wrap:anywhere}
+.kb a:hover{color:var(--ink)}
+.kmap{border:1px solid var(--line);border-radius:6px;overflow:hidden;min-height:440px;background:var(--cloud)}
+.kmap iframe{width:100%;height:100%;min-height:440px;border:0;display:block;filter:grayscale(.85) contrast(.95)}
+
+/* footer */
+footer{background:var(--ink-3);color:rgba(255,255,255,.7);padding:60px 0 28px}
+.fgrid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:38px}
+.fgrid h4{font-family:var(--disp);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--lime);margin:0 0 16px;font-weight:700}
+.fgrid ul{list-style:none;margin:0;padding:0;font-size:14.5px;line-height:2.05;font-weight:300}
+.fgrid ul a:hover{color:#fff}
+.fbrand .brand .bt strong{color:#fff}
+.fbrand .brand .bt span{color:var(--lime)}
+.fbrand p{font-size:14px;color:rgba(255,255,255,.5);margin:18px 0 0;max-width:34ch;font-weight:300}
+.fbot{margin-top:46px;padding-top:22px;border-top:1px solid var(--line-2);display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between;font-size:12.5px;color:rgba(255,255,255,.45)}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}}
+
+@media(max-width:1060px){
+  .menu{display:none}.burger{display:flex}
+  .hero .wrap{grid-template-columns:1fr}
+  .hero-l{max-width:none;margin-left:0;padding:66px 26px 54px}
+  .hero-r{padding:52px 26px}
+  .sec-head{grid-template-columns:1fr;gap:20px;align-items:start}
+  .klub-grid,.kgrid,.ptables{grid-template-columns:1fr;gap:40px}
+  .cards{grid-template-columns:1fr 1fr}
+  .coaches,.legends{grid-template-columns:1fr 1fr}
+  .prada.main,.prada.sub,.prada.inst{grid-template-columns:repeat(2,1fr)}
+  .ngrid{grid-template-columns:1fr}
+  .cisla .wrap{grid-template-columns:1fr 1fr}
+  .ci:nth-child(2){border-right:0}
+  .ci:nth-child(1),.ci:nth-child(2){border-bottom:1px solid var(--line)}
+  .rez .wrap{grid-template-columns:1fr;gap:34px}
+  .fgrid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:700px){
+  section{padding:70px 0}
+  .wrap{padding-left:18px;padding-right:18px}
+  .hero-l{padding:52px 18px 44px}
+  .hero-r{padding:44px 18px}
+  .cards{grid-template-columns:1fr}
+  .coaches,.legends{grid-template-columns:1fr}
+  .prada.main .pbox{height:110px;padding:18px}
+  .prada.sub .pbox,.prada.inst .pbox{height:86px;padding:14px}
+  .pcta{flex-direction:column;text-align:center}
+  .skola-cta{padding:32px 22px}
+  .pt .ptb,.pt .pth{padding-left:22px;padding-right:22px}
+  .fgrid{grid-template-columns:1fr}
+  .nav .btn{display:none}
+  .sf{grid-template-columns:auto 1fr;gap:14px}
+  .sf .chip{grid-column:2}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a href="#" class="brand">
+      <img src="img/logo-ltk-znak.png" alt="Logo LTK Karlovy Vary">
+      <span class="bt"><strong>TK LOKOMOTIVA</strong><span>Karlovy Vary</span></span>
+    </a>
+    <div class="menu">
+      <a href="#klub">Klub</a>
+      <a href="#skola">Tenisová škola</a>
+      <a href="#treneri">Trenéři</a>
+      <a href="#cenik">Ceník</a>
+      <a href="#historie">Historie</a>
+      <a href="#partneri">Partneři</a>
+      <a href="#kontakt">Kontakt</a>
+    </div>
+    <a href="#rezervace" class="btn btn-ink">Rezervovat kurt</a>
+    <button class="burger" aria-label="Menu"><i></i><i></i><i></i></button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-l">
+      <p class="tag">Tuhnice — Karlovy Vary — od 1952</p>
+      <h1>Devět kurtů.<br><span>Sedm dekád</span><br><mark>tenisu.</mark></h1>
+      <p>Tenisový klub Lokomotiva Karlovy Vary. Antuka, tvrdý povrch, zimní hala a tenisová škola, ze které vyrostl reprezentant Davis Cupu.</p>
+      <div class="hero-cta">
+        <a href="#rezervace" class="btn btn-lime">Rezervovat kurt</a>
+        <a href="#skola" class="btn btn-out">Tenisová škola pro děti</a>
+      </div>
+    </div>
+    <aside class="hero-r">
+      <h2>Areál dnes</h2>
+      <div class="hrow"><span>Antukové kurty</span><b>7</b></div>
+      <div class="hrow"><span>Kurty s tvrdým povrchem</span><b>2</b></div>
+      <div class="hrow"><span>Dvorce v zimní hale</span><b>2</b></div>
+      <div class="hrow"><span>Antuka — pronájem</span><b>200 <small>Kč/h</small></b></div>
+      <div class="hrow"><span>Tvrdý povrch — pronájem</span><b>120 <small>Kč/h</small></b></div>
+      <a href="tel:+420775655091" class="btn btn-lime">Zavolat: 775 655 091</a>
+    </aside>
+  </div>
+</header>
+
+<div class="mq">
+  <div class="mq-track">
+    <span>7 antukových kurtů</span><span>2 tvrdé povrchy</span><span>Zimní přetlaková hala</span><span>Tenisová škola od 5 let</span><span>Příměstské tábory</span><span>Tréninková zeď zdarma</span>
+    <span>7 antukových kurtů</span><span>2 tvrdé povrchy</span><span>Zimní přetlaková hala</span><span>Tenisová škola od 5 let</span><span>Příměstské tábory</span><span>Tréninková zeď zdarma</span>
+  </div>
+</div>
+
+<div class="cisla">
+  <div class="wrap">
+    <div class="ci rv"><b>1952</b><span>rok založení</span></div>
+    <div class="ci rv"><b>9</b><span>kurtů v areálu</span></div>
+    <div class="ci rv"><b>4</b><span>trenéři mládeže</span></div>
+    <div class="ci rv"><b>2.</b><span>liga — družstvo mužů</span></div>
+  </div>
+</div>
+
+<section id="klub">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div>
+        <p class="tag">O klubu</p>
+        <h2>Karlovarský tenis má adresu v Tuhnicích</h2>
+      </div>
+      <p>Od dvou kurtů na Růžovém Vrchu k devíti dvorcům, zimní hale a tenisové škole, kterou prošly stovky dětí z Karlových Varů a okolí.</p>
+    </div>
+
+    <div class="klub-grid">
+      <div class="rv">
+        <p>Tenisový klub Lokomotiva Karlovy Vary vznikl v roce 1952 se dvěma kurty a čtrnácti členy. Do dnešní lokality v Tuhnicích jej v roce 1964 přivedli Stanislav Birner a Jaroslav Kolář.</p>
+        <p>V roce 1972 tu vyrostl centrální kurt — jeho slavnostní otevření doprovodil exhibiční zápas Jana Kodeše a Františka Pály. Od roku 1985 je klub samostatným právním subjektem a hospodaří na vlastní účet.</p>
+        <p>Dnes je areál domovem rekreačních hráčů, mládežnické základny i družstev v ligových soutěžích. Za centrkurtem stojí tréninková zeď, kterou mohou začínající tenisté využívat volně.</p>
+        <div class="sig">
+          <b>Ing. Josef Bauer</b>
+          předseda TK Lokomotiva Karlovy Vary z.s.
+        </div>
+      </div>
+
+      <div class="surfaces rv">
+        <div class="sf"><span class="n">7×</span><div><strong>Antukový kurt</strong><span>Klasická antuka udržovaná celou letní sezónu, včetně centrkurtu.</span></div><span class="chip on">200 Kč/h</span></div>
+        <div class="sf"><span class="n">2×</span><div><strong>Tvrdý povrch</strong><span>Dvorce pro hru prakticky za každého počasí.</span></div><span class="chip on">120 Kč/h</span></div>
+        <div class="sf"><span class="n">2×</span><div><strong>Dvorec v zimní hale</strong><span>Přetlaková hala s antukou — sezóna pokračuje i v mrazu.</span></div><span class="chip">zima</span></div>
+        <div class="sf"><span class="n">1×</span><div><strong>Tréninková zeď</strong><span>Za centrálním kurtem, volně k dispozici začátečníkům.</span></div><span class="chip">zdarma</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="skola" id="skola">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div>
+        <p class="tag">Tenisová škola</p>
+        <h2>Od prvního míčku po ligový kurt</h2>
+      </div>
+      <p>Šest tréninkových skupin podle věku a výkonnosti. Děti přijímáme celoročně, v létě navazujeme příměstskými tábory.</p>
+    </div>
+
+    <div class="cards">
+      <article class="card rv"><span class="age">do 7 let</span><h3>Tenisová školička</h3><p>Základy hry formou her. Tréninky rozvíjejí především rychlost a koordinaci pohybu, děti se učí první údery a podání.</p></article>
+      <article class="card rv"><span class="age">8 — 9 let</span><h3>Tenisová škola</h3><p>Navazuje na školičku. Důraz na správné osvojení základních tenisových úderů a rozvoj pohybových schopností.</p></article>
+      <article class="card rv"><span class="age">10 — 14 let</span><h3>Žactvo</h3><p>Přechod na tvrdé míčky, zdokonalování všech úderů a nácvik zápasů s taktickým myšlením.</p></article>
+      <article class="card rv"><span class="age">15 — 18 let</span><h3>Dorost a mládež</h3><p>Zdokonalení úderů a taktiky, posílení kondiční a psychické odolnosti v zátěžových situacích.</p></article>
+      <article class="card rv"><span class="age">bez omezení</span><h3>Rekreační tenis</h3><p>Pro děti, které se tenisu nechtějí věnovat závodně nebo s ním začínají později. Hra pro radost.</p></article>
+      <article class="card rv"><span class="age">6 — 16 let</span><h3>Příměstské tábory</h3><p>Letní kempy v červenci a srpnu. Celodenní program na kurtech pod vedením klubových trenérů.</p></article>
+    </div>
+
+    <div class="skola-cta rv">
+      <div>
+        <h3>Přihlaste dítě do tenisové školy</h3>
+        <p>Zavolejte hlavnímu trenérovi Štěpánu Rinkovi — domluvíte ukázkový trénink a dítě zařadíme do vhodné skupiny.</p>
+      </div>
+      <a href="tel:+420725307413" class="btn btn-lime">725 307 413</a>
+    </div>
+  </div>
+</section>
+
+<section id="treneri">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div>
+        <p class="tag">Trenérský tým</p>
+        <h2>Čtyři trenéři, jedna škola</h2>
+      </div>
+      <p>Od náboru nejmenších dětí po přípravu ligových hráčů — trenéři vedou kompletní mládežnickou základnu klubu.</p>
+    </div>
+    <div class="coaches">
+      <article class="coach rv"><div class="ph"><b>MT</b></div><div class="cb"><h3>Martin Tofi</h3><p class="role">Šéftrenér</p><a class="tel" href="tel:+420602298502">602 298 502</a></div></article>
+      <article class="coach rv"><div class="ph"><b>ŠR</b></div><div class="cb"><h3>Štěpán Rinko</h3><p class="role">Hlavní trenér</p><a class="tel" href="tel:+420725307413">725 307 413</a></div></article>
+      <article class="coach rv"><div class="ph"><b>ZH</b></div><div class="cb"><h3>Zuzana Horská</h3><p class="role">Žactvo a dorost</p><a class="tel" href="tel:+420728794255">728 794 255</a></div></article>
+      <article class="coach rv"><div class="ph"><b>PA</b></div><div class="cb"><h3>Patrik Abeldinov</h3><p class="role">Žactvo a dorost</p><a class="tel" href="tel:+420728688179">728 688 179</a></div></article>
+    </div>
+  </div>
+</section>
+
+<section class="cenik" id="cenik">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div>
+        <p class="tag">Ceník</p>
+        <h2>Ceny bez překvapení</h2>
+      </div>
+      <p>Pronájem kurtů pro členy i veřejnost. Hraje-li člen s hostem, host platí polovinu ceny pronájmu.</p>
+    </div>
+    <div class="ptables">
+      <div class="pt hi rv">
+        <div class="pth"><h3>Pronájem kurtu — léto</h3><span>venkovní sezóna</span></div>
+        <div class="ptb">
+          <div class="pr"><span>Antukový kurt</span><b>200 <small>Kč/hod</small></b></div>
+          <div class="pr"><span>Kurt s tvrdým povrchem</span><b>120 <small>Kč/hod</small></b></div>
+          <div class="pr"><span>Hra člen + host</span><b>50 <small>% z ceny</small></b></div>
+          <div class="pr"><span>Tréninková zeď</span><b>zdarma</b></div>
+        </div>
+      </div>
+      <div class="pt rv">
+        <div class="pth"><h3>Tréninky — cena za hráče</h3><span>od 6. 10. 2025 · venku / hala</span></div>
+        <div class="ptb">
+          <div class="pr"><span>1 hráč</span><b>500 / 890 <small>Kč</small></b></div>
+          <div class="pr"><span>2 hráči</span><b>300 / 490 <small>Kč</small></b></div>
+          <div class="pr"><span>3 hráči</span><b>230 / 310 <small>Kč</small></b></div>
+          <div class="pr"><span>4 hráči</span><b>190 / 270 <small>Kč</small></b></div>
+          <div class="pr"><span>5 a více hráčů</span><b>150 / 250 <small>Kč</small></b></div>
+        </div>
+      </div>
+    </div>
+    <p class="pnote rv">Ceny tréninků jsou uvedené za jednoho hráče a hodinu. Počet dětí ve skupině je zpravidla stabilní a hodiny se účtují všem členům skupiny bez ohledu na účast. Při nemoci lze dohodnout náhradní trénink, při nepříznivém počasí se hodiny ruší. Nečlenům se k ceně pronájmu připočítává 50 %.</p>
+  </div>
+</section>
+
+<section id="historie">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div>
+        <p class="tag">Historie</p>
+        <h2>Milníky od roku 1952</h2>
+      </div>
+      <p>Sedm dekád karlovarského tenisu — od dvou kurtů na Růžovém Vrchu po druhou ligu.</p>
+    </div>
+    <div class="hist-scroll">
+      <div class="hist">
+        <div class="hi"><b>1952</b><strong>Dva kurty na Růžovém Vrchu</strong><p>První kurty TK Lokomotiva. Členskou základnu tvořilo čtrnáct tenistů.</p></div>
+        <div class="hi"><b>1964</b><strong>Stěhování do Tuhnic</strong><p>Stanislav Birner a Jaroslav Kolář zakládají klub v dnešní lokalitě.</p></div>
+        <div class="hi"><b>1972</b><strong>Centrální kurt</strong><p>Otevření doprovodila exhibice Jana Kodeše a Františka Pály.</p></div>
+        <div class="hi"><b>1985</b><strong>Samostatný subjekt</strong><p>TJ Lokomotiva Karlovy Vary se osamostatňuje.</p></div>
+        <div class="hi"><b>2023</b><strong>Nové vedení</strong><p>Klub přebírá Tomáš Kasík, hlavním trenérem je Štěpán Rinko.</p></div>
+        <div class="hi"><b>2024</b><strong>Postup do 2. ligy</strong><p>Družstvo dospělých vybojovalo postup z divize.</p></div>
+      </div>
+    </div>
+    <div class="legends">
+      <div class="leg star rv"><b>Stanislav Birner ml.</b><span>reprezentant v Davis Cupu</span></div>
+      <div class="leg rv"><b>Jiří Havel</b><span>odchovanec klubu</span></div>
+      <div class="leg rv"><b>Luděk Šleis</b><span>odchovanec klubu</span></div>
+      <div class="leg rv"><b>Milan Birner</b><span>odchovanec klubu</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="news" id="aktuality">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div>
+        <p class="tag">Aktuálně</p>
+        <h2>Co se v klubu děje</h2>
+      </div>
+      <p>Novinky z areálu, turnaje a klubové dokumenty.</p>
+    </div>
+    <div class="ngrid">
+      <article class="nit rv"><div class="nimg"><em>Akademie</em></div><div class="nbody"><time>Reportáž</time><h3>Tenisté Lokomotivy navštívili Nadala i Mouratoglou</h3><p>Výprava klubu se podívala do Rafa Nadal Academy. Vedení plánuje vlastní akademii v Karlových Varech.</p><span class="more">Číst dál</span></div></article>
+      <article class="nit rv"><div class="nimg"><em>Turnaj</em></div><div class="nbody"><time>Domácí turnaj</time><h3>ALFABYT Cup opět na kurtech v Tuhnicích</h3><p>Tradiční klubový turnaj s bohatou účastí. Přihlášky a rozlosování najdete v sekci turnaje.</p><span class="more">Číst dál</span></div></article>
+      <article class="nit rv"><div class="nimg"><em>Klub</em></div><div class="nbody"><time>Dokumenty</time><h3>Organizační řád pro rok 2026</h3><p>Aktualizovaný organizační řád, členské příspěvky a hrací řád ke stažení na jednom místě.</p><span class="more">Číst dál</span></div></article>
+    </div>
+  </div>
+</section>
+
+<section class="partneri" id="partneri">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div>
+        <p class="tag">Děkujeme za podporu</p>
+        <h2>Partneři klubu</h2>
+      </div>
+      <p>Bez podpory města, kraje a partnerů by karlovarský tenis nefungoval — od tréninků nejmenších dětí po ligová družstva.</p>
+    </div>
+
+    <div class="pgrp rv">
+      <div class="pgrp-head">Hlavní partneři</div>
+      <div class="prada main">
+        <a class="pbox" href="https://www.mmkv.cz" target="_blank" rel="noopener" title="Město Karlovy Vary"><img src="img/partneri/mmkv.png" alt="Město Karlovy Vary" loading="lazy"></a>
+        <a class="pbox" href="https://www.kr-karlovarsky.cz" target="_blank" rel="noopener" title="Karlovarský kraj"><img src="img/partneri/kk.png" alt="Karlovarský kraj" loading="lazy"></a>
+        <a class="pbox" href="https://alfabyt.cz" target="_blank" rel="noopener" title="ALFABYT"><img src="img/partneri/alfabyt.jpg" alt="ALFABYT — správa nemovitostí" loading="lazy"></a>
+      </div>
+    </div>
+
+    <div class="pgrp rv">
+      <div class="pgrp-head">Partneři</div>
+      <div class="prada sub">
+        <a class="pbox" href="https://agenturasport.cz" target="_blank" rel="noopener" title="Národní sportovní agentura"><img src="img/partneri/nsa.png" alt="Národní sportovní agentura" loading="lazy"></a>
+        <a class="pbox" href="https://www.babolat.cz" target="_blank" rel="noopener" title="Babolat"><img src="img/partneri/babolat.png" alt="Babolat" loading="lazy"></a>
+        <a class="pbox" href="https://www.safeguard.cz" target="_blank" rel="noopener" title="Safeguard Service"><img src="img/partneri/sgs.png" alt="Safeguard Service" loading="lazy"></a>
+      </div>
+    </div>
+
+    <div class="pgrp rv">
+      <div class="pgrp-head">Svazy a instituce</div>
+      <div class="prada inst">
+        <a class="pbox" href="https://www.cztenis.cz" target="_blank" rel="noopener" title="Český tenisový svaz"><img src="img/partneri/cts.png" alt="Český tenisový svaz" loading="lazy"></a>
+        <a class="pbox" href="https://www.cus.cz" target="_blank" rel="noopener" title="Česká unie sportu"><img src="img/partneri/cus.png" alt="Česká unie sportu" loading="lazy"></a>
+        <div class="pbox" title="Spolufinancováno Evropskou unií"><img src="img/partneri/eu-spolu.jpg" alt="Spolufinancováno Evropskou unií" loading="lazy"></div>
+      </div>
+    </div>
+
+    <div class="pcta rv">
+      <p><b>Chcete klub podpořit?</b> Nabídku připravíme na míru — od loga na dvorci po celoroční spolupráci.</p>
+      <a href="tel:+420775655091" class="btn btn-ink">Ozvěte se nám</a>
+    </div>
+  </div>
+</section>
+
+<section class="rez" id="rezervace">
+  <div class="wrap">
+    <div>
+      <p class="tag light">Rezervace kurtu</p>
+      <h2>Kurt si zamluvíte jedním telefonátem</h2>
+      <p>Volné termíny na antuce i tvrdém povrchu, v zimě v hale. Rezervace přijímáme denně, pro členy i veřejnost.</p>
+      <a href="#kontakt" class="btn btn-out-light">Kde nás najdete</a>
+    </div>
+    <div class="rez-box rv">
+      <span>Rezervace kurtů</span>
+      <a href="tel:+420775655091" class="phone">+420 775 655 091</a>
+      <p>Denně 7:00 — 22:00, Bečovská 1811/11, areál Tuhnice</p>
+      <a href="tel:+420775655091" class="btn btn-lime">Zavolat a rezervovat</a>
+    </div>
+  </div>
+</section>
+
+<section id="kontakt">
+  <div class="wrap">
+    <div class="kgrid">
+      <div class="rv">
+        <p class="tag">Kontakt</p>
+        <h2>Najdete nás v Tuhnicích</h2>
+        <div class="kb"><span>Adresa areálu</span><p>Tenisový klub Lokomotiva Karlovy Vary z.s.<br>Bečovská 1811/11, 360 01 Karlovy Vary</p></div>
+        <div class="kb"><span>Rezervace kurtů</span><p><a href="tel:+420775655091">+420 775 655 091</a></p></div>
+        <div class="kb"><span>Předseda klubu</span><p>Ing. Josef Bauer — <a href="tel:+420775655091">+420 775 655 091</a></p></div>
+        <div class="kb"><span>Facebook</span><p><a href="https://facebook.com/tklokomotivakarlovyvary" target="_blank" rel="noopener">facebook.com/tklokomotivakarlovyvary</a></p></div>
+        <div class="kb"><span>IČ</span><p>63554615</p></div>
+      </div>
+      <div class="kmap rv">
+        <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=12.855%2C50.225%2C12.885%2C50.238&amp;layer=mapnik&amp;marker=50.2315%2C12.8700" loading="lazy" title="Mapa areálu"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div class="fbrand">
+        <a href="#" class="brand">
+          <img src="img/logo-ltk-znak.png" alt="Logo LTK Karlovy Vary">
+          <span class="bt"><strong>TK LOKOMOTIVA</strong><span>Karlovy Vary</span></span>
+        </a>
+        <p>Tenisový klub s tradicí od roku 1952. Devět kurtů, zimní hala a tenisová škola v areálu Tuhnice.</p>
+      </div>
+      <div><h4>Klub</h4><ul><li><a href="#klub">O nás</a></li><li><a href="#historie">Historie</a></li><li><a href="#">Stanovy</a></li><li><a href="#">Členské příspěvky</a></li></ul></div>
+      <div><h4>Tenis</h4><ul><li><a href="#skola">Tenisová škola</a></li><li><a href="#treneri">Trenéři</a></li><li><a href="#">Družstva</a></li><li><a href="#">Turnaje</a></li></ul></div>
+      <div><h4>Hraní</h4><ul><li><a href="#rezervace">Rezervace</a></li><li><a href="#cenik">Ceník</a></li><li><a href="#partneri">Partneři</a></li>
+<li><a href="#">Galerie</a></li><li><a href="#kontakt">Kontakt</a></li></ul></div>
+    </div>
+    <div class="fbot">
+      <span>© 2026 Tenisový klub Lokomotiva Karlovy Vary z.s. — IČ 63554615</span>
+      <span>Návrh: varianta „Centrkurt“</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.1,rootMargin:'0px 0px -50px 0px'});
+document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%4)*70+'ms';io.observe(el)});
+</script>
+</body>
+</html>
